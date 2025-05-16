@@ -248,10 +248,7 @@ function limpiarBusqueda() {
       const ruta = userLocation ? 
         `https://www.google.com/maps/dir/${userLocation[0]},${userLocation[1]}/${lat},${lon}/` :
         `https://www.google.com/maps?q=${lat},${lon}`;
-      const waze = `https://waze.com/ul?ll=${lat},${lon}&navigate=yes`;
-const popupHTML = `<b>${placa}</b><br>${lat}, ${lon}<br>${alimentador}<br>
-<a href='${ruta}' target='_blank'>Google Maps</a> | <a href='${waze}' target='_blank'>Waze</a>`;
-marker.bindPopup(popupHTML).openPopup();
+      marker.bindPopup(`<b>${nombre}</b><br>${lat}, ${lon}<br>${alimentador}<br><a href='${ruta}' target='_blank'>➡ Ver ruta en Google Maps</a>`).openPopup();
       map.setView([lat, lon], 16);
     }
 
