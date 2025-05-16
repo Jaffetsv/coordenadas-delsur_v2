@@ -265,7 +265,7 @@ const waze = `https://waze.com/ul?ll=${p.lat},${p.lon}&navigate=yes`;
         marker.bindPopup(`<b>${p.placa}</b><br>${p.lat}, ${p.lon}<br>${p.alimentador}<br><a href='${gmaps}' target='_blank'>📍 Ver en Google Maps</a>`);
       });
       document.getElementById('result').innerHTML = `
-        Ubicación actual: ${lat.toFixed(6)}, ${lon.toFixed(6)}<br>
+        Coordenadas de Ubicación actual: ${lat.toFixed(6)}, ${lon.toFixed(6)}<br>
         
       `;
 
@@ -279,7 +279,7 @@ const waze = `https://waze.com/ul?ll=${p.lat},${p.lon}&navigate=yes`;
 tablaHTML += `<tr><td><a href='#' onclick='event.preventDefault(); centrarEnMapa(${p.lat}, ${p.lon}, "${p.placa}", "${p.alimentador}")'>${p.placa}</a></td><td>${p.alimentador}</td><td>${distanciaM}</td><td><a href="${gmaps}" target="_blank">Maps</a> | <a href="${waze}" target="_blank">Waze</a></td></tr>`;
       });
       tablaHTML += "</tbody></table>";
-      document.getElementById('tabla-cercanos').innerHTML = "<strong>10 Elementos más cercanos</strong><br><br>" + tablaHTML;
+      document.getElementById('tabla-cercanos').innerHTML = "<strong>10 elementos más cercanos</strong><br><br>" + tablaHTML;
       map.setView([lat, lon], 14);
     }
 
