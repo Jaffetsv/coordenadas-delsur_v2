@@ -261,12 +261,12 @@ function limpiarBusqueda() {
       cercanos.forEach(p => {
         const marker = L.marker([p.lat, p.lon]).addTo(markerLayer);
         const gmaps = `https://www.google.com/maps?q=${p.lat},${p.lon}`;
+const waze = `https://waze.com/ul?ll=${p.lat},${p.lon}&navigate=yes`;
         marker.bindPopup(`<b>${p.placa}</b><br>${p.lat}, ${p.lon}<br>${p.alimentador}<br><a href='${gmaps}' target='_blank'>📍 Ver en Google Maps</a>`);
       });
       document.getElementById('result').innerHTML = `
-        <strong>10 elementos más cercanos</strong><br>
         Ubicación actual: ${lat.toFixed(6)}, ${lon.toFixed(6)}<br>
-        <a href='https://www.google.com/maps?q=${lat},${lon}' target='_blank'>📍 Ver en Google Maps</a>
+        
       `;
 
       let tablaHTML = "<table border='1' cellpadding='6' style='border-collapse:collapse; width:auto; text-align:left;'>";
@@ -275,10 +275,11 @@ function limpiarBusqueda() {
         const distanciaM = (p.distancia * 111139).toFixed(1);
         const idFila = `punto_${p.lat}_${p.lon}`.replace(/\./g, '_');
         const gmaps = `https://www.google.com/maps?q=${p.lat},${p.lon}`;
-tablaHTML += `<tr><td><a href='#' onclick='event.preventDefault(); centrarEnMapa(${p.lat}, ${p.lon}, "${p.placa}", "${p.alimentador}")'>${p.placa}</a></td><td>${p.alimentador}</td><td>${distanciaM}</td><td><a href="${gmaps}" target="_blank">📍G Maps</a></td></tr>`;
+const waze = `https://waze.com/ul?ll=${p.lat},${p.lon}&navigate=yes`;
+tablaHTML += `<tr><td><a href='#' onclick='event.preventDefault(); centrarEnMapa(${p.lat}, ${p.lon}, "${p.placa}", "${p.alimentador}")'>${p.placa}</a></td><td>${p.alimentador}</td><td>${distanciaM}</td><td><a href="${gmaps}" target="_blank">Maps</a> | <a href="${waze}" target="_blank">Waze</a></td></tr>`;
       });
       tablaHTML += "</tbody></table>";
-      document.getElementById('tabla-cercanos').innerHTML = tablaHTML;
+      document.getElementById('tabla-cercanos').innerHTML = "<strong>10 elementos más cercanos</strong><br><br>" + tablaHTML;
       map.setView([lat, lon], 14);
     }
 
