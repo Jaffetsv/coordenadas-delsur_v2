@@ -244,9 +244,7 @@ function limpiarBusqueda() {
     }
 
     function mostrarCercanos(lat, lon) {
-      const todos = [...placas, ...contratos.map(c => ({
-        placa: c.ds, lat: c.lat, lon: c.lon, alimentador: c.alimentador || 'N/D'
-      }))];
+      const todos = [...placas];
       todos.forEach(p => {
         p.distancia = Math.sqrt((p.lat - lat) ** 2 + (p.lon - lon) ** 2);
       });
