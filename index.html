@@ -248,7 +248,10 @@ function limpiarBusqueda() {
       const ruta = userLocation ? 
         `https://www.google.com/maps/dir/${userLocation[0]},${userLocation[1]}/${lat},${lon}/` :
         `https://www.google.com/maps?q=${lat},${lon}`;
-      marker.bindPopup(`<b>${nombre}</b><br>${lat}, ${lon}<br>${alimentador}<br><a href='${ruta}' target='_blank'>➡ Ver ruta en Google Maps</a>`).openPopup();
+      const waze = `https://waze.com/ul?ll=${lat},${lon}&navigate=yes`;
+const popupHTML = `<b>${placa}</b><br>${lat}, ${lon}<br>${alimentador}<br>
+<a href='${ruta}' target='_blank'>Google Maps</a> | <a href='${waze}' target='_blank'>Waze</a>`;
+marker.bindPopup(popupHTML).openPopup();
       map.setView([lat, lon], 16);
     }
 
@@ -265,7 +268,7 @@ const waze = `https://waze.com/ul?ll=${p.lat},${p.lon}&navigate=yes`;
         marker.bindPopup(`<b>${p.placa}</b><br>${p.lat}, ${p.lon}<br>${p.alimentador}<br><a href='${gmaps}' target='_blank'>📍 Ver en Google Maps</a>`);
       });
       document.getElementById('result').innerHTML = `
-        Coordenadas de Ubicación actual: ${lat.toFixed(6)}, ${lon.toFixed(6)}<br>
+        Ubicación actual: ${lat.toFixed(6)}, ${lon.toFixed(6)}<br>
         
       `;
 
