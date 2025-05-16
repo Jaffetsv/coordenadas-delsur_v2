@@ -32,7 +32,16 @@
         height: 60px;
       }
     }
-    </style>
+    @media (max-width: 600px) {
+  #manualCoords {
+    flex-direction: column;
+    align-items: center;
+  }
+  #tabla-cercanos table {
+    font-size: 0.85rem;
+  }
+}
+</style>
 </head>
 <body>
   <header style='display:flex;justify-content:space-between;align-items:center;'>
