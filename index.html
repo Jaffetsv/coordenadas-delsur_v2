@@ -269,7 +269,7 @@ const waze = `https://waze.com/ul?ll=${p.lat},${p.lon}&navigate=yes`;
         
       `;
 
-      let tablaHTML = "<table border='1' cellpadding='6' style='border-collapse:collapse; width:auto; text-align:left;'>";
+      let tablaHTML = "<table border='1' cellpadding='6' style='text-align: center' style='border-collapse:collapse; width:auto; text-align:left;'>";
       tablaHTML += "<thead><tr><th>Elemento</th><th>Alimentador</th><th>Distancia (m)</th><th>Mapa</th></tr></thead><tbody>";
       cercanos.forEach(p => {
         const distanciaM = (p.distancia * 111139).toFixed(1);
@@ -279,7 +279,7 @@ const waze = `https://waze.com/ul?ll=${p.lat},${p.lon}&navigate=yes`;
 tablaHTML += `<tr><td><a href='#' onclick='event.preventDefault(); centrarEnMapa(${p.lat}, ${p.lon}, "${p.placa}", "${p.alimentador}")'>${p.placa}</a></td><td>${p.alimentador}</td><td>${distanciaM}</td><td><a href="${gmaps}" target="_blank">Maps</a> | <a href="${waze}" target="_blank">Waze</a></td></tr>`;
       });
       tablaHTML += "</tbody></table>";
-      document.getElementById('tabla-cercanos').innerHTML = "<strong>10 elementos más cercanos</strong><br><br>" + tablaHTML;
+      document.getElementById('tabla-cercanos').innerHTML = "<strong>10 Elementos más cercanos</strong><br><br>" + tablaHTML;
       map.setView([lat, lon], 14);
     }
 
